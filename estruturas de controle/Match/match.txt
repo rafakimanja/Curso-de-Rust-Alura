@@ -1,0 +1,20 @@
+O 'Match' do Rust se assemelha ao 'Match Case' do Python ou 'Switch Case' de outras linguagens
+
+fn funcao(){
+
+    let linguagem = "Java";
+    let proposito = match linguagem{
+        "PHP" => "Web",
+        "Kotlin" => "Android",
+        "Python" => "Data Science",
+        _ => "Desconhecido"
+    };
+
+    println!("O proposito de {} e {}", linguagem, proposito);
+}
+
+fn main(){
+    funcao();
+}
+
+Para tratarmos um possível argumento inválido usamos '_ =>' como caso 'default'

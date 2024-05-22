@@ -1,0 +1,9 @@
+A estrutura do FOR em Rust é semelhante a do Python, por padrão, é um For Iterador
+
+fn tabuada(multiplicador:u8){
+    for i in 1..11{
+        println!("{} x {} = {}", i, multiplicador, i*multiplicador);
+    }
+}
+
+na síntaxe '1..11' o primeiro número é incluído no contador, o último não!

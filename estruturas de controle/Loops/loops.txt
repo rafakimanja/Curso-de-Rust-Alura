@@ -1,0 +1,47 @@
+---------- While ----------
+
+fn tabuada(multiplicador:u8){
+    
+    let mut contador:u8 = 0;
+
+    while contador < 10{
+        contador += 1;
+        println!("{} x {} = {}", contador, multiplicador, contador*multiplicador);
+    }
+}
+
+-------------------------
+
+----------- Loop -----------
+
+loop {
+        contador += 1;
+
+        println!("{} x {} = {}", contador, multiplicador, contador*multiplicador);
+
+        if contador == 10{
+            break;
+        }
+    }
+
+semelhante ao um 'While True'
+
+---------------------------
+
+----------- Continue -----------
+
+while contador < 10{
+
+        contador += 1;
+
+        if contador == 5{
+            continue;
+        }
+
+        println!("{} x {} = {}", contador, multiplicador, contador*multiplicador);
+    }
+
+Faz o contador voltar para o inicio do loop, pulando tudo que tem dele para baixo
+
+--------------------------------
+
