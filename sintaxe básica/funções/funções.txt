@@ -1,0 +1,24 @@
+Para retornar um valor por função em Rust nos usamos '->':
+-----------------------------------------------
+fn soma(a:i32, b:i32) -> i32
+{
+    println!("{} + {} = {}", a, b, a+b);
+    a+b
+}
+-----------------------------------------------
+
+Quase tudo em Rust são expressões, possuem algum valor, quando queremos ignoras este valor usamos o ';' no final
+quando queremos usar o valor deixamos sem o ';'
+
+-----------------------------------------------
+fn soma(a:i32, b:i32) -> i32
+{
+    println!("{} + {} = {}", a, b, a+b);
+    a+b
+}
+
+fn main(){
+    println!("soma = {}", soma(2, 2));
+}
+-----------------------------------------------
+

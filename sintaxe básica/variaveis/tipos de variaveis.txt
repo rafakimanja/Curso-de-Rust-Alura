@@ -1,0 +1,22 @@
+variaveis em Rust:
+
+let variavel:u8 = 128;
+
+let = declaração de variavel | nome da variavel | : = indica que depois dela vem o tipo da let | u8 = tipo da let | = 123 -> atribuição de valor a let
+
+let type 'i8' = variável do tipo inteiro (neg/pos) de 1byte/8bits
+let type 'u8' = variável do tipo inteiro (pos) de 1byte/8bits
+
+---------------------------------------------------------------
+
+se fizermos 'let variavel = 128;' sem declaração de tipo, por padrão o Rust assume um 'i32' = inteiro de 4 bytes
+
+let booleana:bool = false;
+    booleana = true;  -> isso gera um erro em Rust
+
+por padrão, variaveis em Rust são imutáveis!
+
+para modificar valores de variáveis:
+
+let mut booleana:bool = false; -> usar a tag 'mut'
+    booleana = true;  //erro de mutação

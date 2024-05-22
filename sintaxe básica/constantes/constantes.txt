@@ -1,0 +1,65 @@
+Uma variável em Rust, mutável ou não, quando é declarada ela é alocada na memória
+então usamos endereços de memória 
+
+Diferente de constantes, que não são alocadas na memória
+
+Sempre que declararmos uma constante, é necessário passao valor dela:
+
+exe: const PI:f32 = 3.14;
+
+Como constantes são variáveis muito utilizadas, também podemos declará-las como globais:
+---------------------------------
+const PI:f32 = 3.14;
+
+fn main(){
+    println!("PI = {}", PI);
+}
+---------------------------------
+se quisermos uma várial de fato, que seja global, que seja alocada na memória usamos 'static':
+---------------------------------
+const PI:f32 = 3.14;
+static VARIAVEL_GLOBAL:u8 = 1;
+
+fn main(){
+    println!("PI = {}", PI);
+    println!("Variavel Global = {}", VARIAVEL_GLOBAL);
+}
+---------------------------------
+*Rust pede que variáveis globais sejam escritas em UPPER CASE
+
+
+variáveis globais "podem" ser mutavais, contudo, o Rust não recomenda e te restrinje dizendo que não é seguro:
+---------------------------------
+const PI:f32 = 3.14;
+static mut VARIAVEL_GLOBAL:u8 = 1;
+
+fn main(){
+    println!("PI = {}", PI);
+    println!("Variavel Global = {}", VARIAVEL_GLOBAL);
+}
+
+error[E0133]: use of mutable static is unsafe and requires unsafe function or block
+ --> .\main.rs:6:38
+  |
+6 |     println!("Variavel Global = {}", VARIAVEL_GLOBAL);
+  |                                      ^^^^^^^^^^^^^^^ use of mutable static
+  |
+  = note: mutable statics can be mutated by multiple threads: aliasing violations or data races will cause undefined behavior
+---------------------------------
+
+Caso queira ir contra a recomendação, você pode definir o bloco como "inseguro"
+
+const PI:f32 = 3.14;
+static mut VARIAVEL_GLOBAL:u8 = 1;
+---------------------------------
+fn main(){
+    println!("PI = {}", PI);
+
+    unsafe{
+        println!("Variavel Global = {}", VARIAVEL_GLOBAL);
+    }
+
+}
+---------------------------------
+
+

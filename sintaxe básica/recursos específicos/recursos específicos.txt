@@ -1,0 +1,54 @@
+Rust permite fazer a redeclaração de variáveis
+---------------------------------------------
+fn nova_funcao(){
+    let variavel:i32 = 128;
+    println!("variavel = {}", variavel);
+
+    let variavel:i32 = 130;
+    println!("variavel = {}", variavel);
+}
+---------------------------------------------
+
+Também é possível criar escopos a vulso, e como em outras linguagem, o que tem dentro do escopo só existe ali:
+---------------------------------------------
+fn sombra(){
+    let a = 123;
+
+    {
+        let b = 456;
+        println!("dentro 'b' = {}", b);
+        println!("variavel 'a' = {}", a);
+    }
+
+    println!("fora 'b' = {}", b); //não vai funcionar
+
+    println!("variavel 'a' = {}", a);
+}
+---------------------------------------------
+
+Como redeclarações são basicamente novas variáveis, redeclarar dentro de escopos faz com que existam mais de uma instância da mesma variável
+---------------------------------------------
+fn sombra(){
+    let a = 123;
+
+    {
+        let a = 888;
+        let b = 456;
+        println!("dentro 'b' = {}", b);
+        println!("variavel dentro 'a' = {}", a);
+    }
+
+    //println!("fora 'b' = {}", b); //não vai funcionar
+
+    println!("variavel 'a' = {}", a);
+}
+
+variavel = 128
+variavel = 130
+dentro 'b' = 456
+variavel dentro 'a' = 888
+variavel 'a' = 123
+
+---------------------------------------------
+
+o nome deste funcionamento chama-se 'shadowing' 
