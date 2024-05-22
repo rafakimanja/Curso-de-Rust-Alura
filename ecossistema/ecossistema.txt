@@ -1,0 +1,6 @@
+o Rust possuí um gerenciador de pacotes chamado 'Cargo' com ele podemos rodar projetos, 
+sem precisar compilar um arquivo por vez, criar novos projetos com estrutura pronta, etc...
+
+Para rodar uma aplicação basta usar `cargo run`
+
+Para criar um novo projeto `cargo new nome_do_projeto`
