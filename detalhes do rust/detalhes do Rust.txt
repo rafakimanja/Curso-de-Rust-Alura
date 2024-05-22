@@ -1,0 +1,82 @@
+
+        Ownership
+
+Strings no Rust são um conceito mais complexo, basicamente, o Rust trabalha com a ideia que Strings só tem 1 dono
+
+Quando uma String é alocada no Heap, o ponteiro dessa memória só pode ter um dono, e não pode ser copiado para outras variáveis
+
+fn ownership(){
+    let palavra = String::from("Rafael");
+    rouba(palavra);
+    println!("{}", palavra); //não vai funcionar, pois já passamos o ponteiro da String 'palavra' para a variável 'string' da função 'rouba()'
+}
+
+fn rouba(string: String){
+    println!("{}", string);
+}
+
+fn main(){
+    ownership();
+}
+
+
+----------------------------------------------------------------------------
+
+        Referências e Borrowing
+
+Quando precisamos para uma referência, para uma função por exemplo, sem perder o ponteiro original
+podemos 'emprestar' a referência, usando o conceito de 'Borrowing', para isso precisamos passar um a let com '&'
+
+fn ownership(){
+    let mut palavra = String::from("Rafael");
+    rouba(&palavra);
+    println!("{}", palavra);
+}
+
+fn rouba(string: &String){
+    println!("{}", string);
+}
+
+fn main(){
+    ownership();
+}
+
+
+Referências por padrão também são imutáveis, então mesmo que você empreste a referência, não poderá modificá-la
+para poder modificar o valor é necessário que a além da própria variável seja mutável, a referência também seja
+
+fn ownership(){
+    let mut palavra = String::from("Rafael");
+    rouba(&mut palavra);
+    println!("{}", palavra);
+}
+
+fn rouba(string: &mut String){
+    string.push_str(" Lopes");
+    println!("{}", string);
+}
+
+fn main(){
+    ownership();
+}
+
+
+----------------------------------------------------------------------------
+
+        Pattern Matching
+
+fn pattern_matching(){
+    
+    for i in 1..21{
+        println!("{}: {}", i, match i {
+            1 => "Muito pouco",
+            2 | 3 => "Um pouquinho",
+            4..=10 => "Um bocado",
+            _ if i % 2 == 0 => "Uma boa quantidade",
+            _ => "Muito"
+        });
+    }
+}
+
+----------------------------------------------------------------------------
+
