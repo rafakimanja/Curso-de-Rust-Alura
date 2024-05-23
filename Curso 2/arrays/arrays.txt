@@ -1,0 +1,62 @@
+Podemos definir um arrays em diferentes formatos:
+
+- let notas:[f32; 4]= [10.0, 8.0, 9.5, 6.0]; -> passando o tipo/tamanho e atribuindo o valor em cada posição
+
+- let notas = [10.0, 8.0, 9.5, 6.0]; -> apenas atribuindo o valor e deixando o Rust definir o tipo para o array
+
+- let notas:[f32; 4]= [6.5; 4]; -> aplicando um valor padrão em todos os itens
+
+--------------------------------
+
+Para percorrer um array podemos fazer assim:
+
+for nota in notas {
+        println!("nota = {}", nota);
+    }
+
+
+ou assim:
+
+for indice in 0..notas.len(){
+        println!("{}° nota = {}",indice+1, notas[indice]);
+    }
+
+--------------------------------
+
+também podemos criar matrizes
+
+fn matriz(){
+
+    let matriz = [
+        [1.1, 1.2, 1.3],
+        [0.22, 0.25, 0.27]
+    ];
+
+    for linha in matriz{
+        for item in linha{
+            print!("{}, ", item);
+        }
+        println!("");
+    }
+}
+
+--------------------------------
+
+Usize e Isize 
+
+é um tipo de dado que salva o ponteiro de um endereço de memória, podendo ser de um sistema
+de 32 ou 64 bits.
+
+Para não precisar definir um tipo corre de interiro 'u8, u23, ...' usamos o Usize, que faz o 
+
+calculo correto do sistema
+
+Usize -> só positivo
+Isize -> pega sinal negativo também
+
+"
+    let indice: usize = 2;
+    println!("Posição {} = {}", indice, notas[indice]);
+"
+
+*arrays não tem valores negativo
