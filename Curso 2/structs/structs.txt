@@ -1,0 +1,43 @@
+Structs em Rust são uma mistura das Structs do C com Orientação a Objetos
+
+além de terem o mesmo comportamento do C, de juntar diferentes tipos de variáveis em um unico lugar só para usar como um modelo
+
+struct Titular{
+    nome: String,
+    sobrenome: String
+}
+
+e também aceitar outras Structs como parâmetro
+
+struct Conta {
+    titular: Titular, 
+    saldo: f64
+}
+
+elas também podem ter métodos, e esses métodos tem que ter a referência de quem os chamou, usando o 'self' do Python para isso 
+
+struct Conta {
+    titular: Titular, 
+    saldo: f64
+}
+
+impl Conta {
+    fn sacar(&mut self, valor: f64){
+        
+        self.saldo -= valor;
+    }
+}
+
+para acessar os dados da Struct é igual ao C 
+
+fn conta_corrente(){
+
+    let mut conta: Conta = Conta{titular: Titular{nome: String::from("Rafael"), sobrenome: String::from("Lopes Ens")}, saldo: 3.75};
+
+    println!("Dados da conta: Titular = {} {}, Saldo = {}", conta.titular.nome, conta.titular.sobrenome, conta.saldo);
+
+    conta.sacar(2.50);
+
+    println!("Dados da conta: Titular = {} {}, Saldo = {}", conta.titular.nome, conta.titular.sobrenome, conta.saldo);
+}
+

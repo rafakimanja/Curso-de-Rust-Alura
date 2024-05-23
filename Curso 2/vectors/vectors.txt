@@ -1,0 +1,73 @@
+vectors em Rust, são arrays com tamanho dinâmico
+
+fn vectors(){
+    
+    let mut nomes:Vec<&str> = Vec::new();
+
+    nomes.push("Rafael");
+    nomes.push("Lopes");
+    nomes.push("Ens");
+
+    println!("{:?}", nomes);
+}
+
+
+também é possível declarar vetores dinâmicos usando uma 'macro' chamada 'vec!'
+
+let mut nomes:Vec<&str> = vec!["Rafael", "Lopes", "Ens"];
+
+e posso adicionar mais sem problemas 
+
+fn vectors(){
+    
+    let mut nomes:Vec<&str> = vec!["Rafael", "Lopes", "Ens"];
+
+    nomes.push("Software Development");
+
+    for nome in nomes
+    {
+        println!("{}", nome);
+    }
+}
+
+--------------------------------------------------
+
+Como vetores dinâmicos são diferentes de arrays sequenciais, é possível tentar acessar uma posição que 
+'não existe', para evitar isso, ao inves de acessar a posição diretamente, podemos usar uma função 'get()'
+
+fn vectors(){
+    
+    let mut nomes:Vec<&str> = vec!["Rafael", "Lopes", "Ens"];
+
+    nomes.push("Software Development");
+
+    println!("Sobrenome = {}", nomes[1]);
+
+    for nome in &nomes
+    {
+        println!("{}", nome);
+    }
+
+    println!("nome em 10 = {}", match nomes.get(10){ -> estou tentando pegar o valor na posição 10
+        Some(n) => *n, -> se ele existir, temos o Some() que passa o ponteiro da posição, como queremos o valor naquela posição, colocamos '*n'
+        None => "Não existe" -> caso não exista nada naquela posição, podemos colocar uma valor qualquer, ou usar o 'if let'
+    });
+
+    nomes.pop(); //remove o ultimo valor do vetor
+
+    while let Some(nome) = nomes.pop()
+    {
+        println!("nome removido = {}", nome);
+    }
+}
+
+--------------------------------------------------
+
+também é possível definir o tamanho iniciar do vetor que você quer alocar
+
+    let mut nomes:Vec<&str> = Vec::with_capacity(4);
+
+    nomes.push("Rafael");
+    nomes.push("Lopes");
+    nomes.push("Ens");
+    nomes.push("Software Development"); 
