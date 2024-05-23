@@ -1,0 +1,46 @@
+o tipo option em Rust serve para quando esperamos receber um valor
+mas este valor pode conter alguma informação ou pode não ter nada
+
+fn main() {
+    conteudo_opcional();
+}
+
+fn conteudo_opcional(){
+    let conteudo_arquivo = ler_arquivo(String::from("c:/users/documentos"));
+    
+    match &conteudo_arquivo {
+        Some(valor) => println!("{}", valor),
+        None => println!("arquivo não existe!")
+    };
+
+    println!("{:?}", conteudo_arquivo); -> "{:?}" é um debbuguer do Rust
+}
+
+fn ler_arquivo(caminho_arquivo: String) -> Option<String>
+{
+    Some(String::from("conteudo do arquivo"))
+    //None
+}
+
+-------------------------------------------------------------------
+
+quando temos um caso que queremos tratar apenas um Valor de vários possíveis, por exemplo,
+eu quero mostrar algo somente quando o arquivo estiver com conteúdo, se retornar 'None' não
+quero fazer nada, eu posso usar o 'if let'
+
+fn conteudo_opcional(){
+    let conteudo_arquivo = ler_arquivo(String::from("c:/users/documentos"));
+    
+    match &conteudo_arquivo {
+        Some(valor) => println!("{}", valor),
+        None => println!("arquivo não existe!")
+    };
+
+    println!("{:?}", conteudo_arquivo);
+
+    if let Some(valor) = conteudo_arquivo{ println!("Substituto para o match, arquivo = {}", valor) };
+}
+
+diferente do 'match' onde eu sou obrigado a tratar todos os casos, o 'if let' eu trato somento 1 caso que eu quero,
+o resto é ignorado
+
