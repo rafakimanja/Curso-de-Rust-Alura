@@ -1,0 +1,75 @@
+
+Enums são tipos de dados criados por nós programadores, a estrutura se assemelha bastante aos Enums do Java
+
+fn fim_de_semana(dia_semana: DiaDaSemana) -> bool
+{
+    match dia_semana{
+        DiaDaSemana::Domingo | DiaDaSemana::Sabado => true,
+        _ => false
+    }
+}
+
+enum DiaDaSemana{
+    Domingo,
+    Segunda,
+    Terca,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sabado
+}
+
+
+
+----------------------------------------
+
+Podemos atribuir valor a uma Enums
+
+enum Color{
+    Red,
+    Green,
+    Blue,
+    RgbColor(u8, u8, u8)
+}
+
+fn cores(){
+
+    let cor = Color::RgbColor(244, 1, 4);
+
+    println!(
+        "Cor = {}",
+        match cor{
+        Color::Red => "vermelho",
+        Color::Green => "verde",
+        Color::Blue => "azul",
+        Color::RgbColor(0, 0, 0) => "preto",
+        Color::RgbColor(_, _, _) => "desconhecido"
+    });
+}
+
+----------------------------------------
+
+#[allow(dead_code)] -> serve para tirar o aviso de que o código não está sendo usado
+enum Color{
+    Red,
+    Green,
+    Blue,
+    RgbColor(u8, u8, u8),
+    CymkColor{cyan: u8, magenta: u8, yellow: u8, black: u8}
+}
+
+fn cores(){
+
+    let cor = Color::CymkColor{cyan: 100, magenta: 50, yellow: 70, black: 255};
+
+    println!(
+        "Cor = {}",
+        match cor{
+        Color::Red => "vermelho",
+        Color::Green => "verde",
+        Color::Blue => "azul",
+        Color::RgbColor(0, 0, 0 ) | Color::CymkColor{cyan:_, magenta:_, yellow:_, black: 255} => "preto",
+        Color::RgbColor(_, _, _)  => "RGB desconhecido",
+        Color::CymkColor{cyan:_, magenta:_, yellow:_, black:_} => "Cymk desconhecido"
+    });
+}
